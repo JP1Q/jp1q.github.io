@@ -3,51 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Portfolio</title>
+    <title>BRUTAL_DESIGN.exe</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 p-4 md:p-8">
-    <main class="max-w-7xl mx-auto">
-        <h1 class="text-4xl font-bold mb-8">My Design Portfolio</h1>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[200px]">
+        .glitch {
+            animation: glitch 1s linear infinite;
+        }
+        
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px,0) skew(0deg); }
+            4%, 60% { transform: translate(-2px,0) skew(0deg); }
+            62% { transform: translate(0,0) skew(5deg); }
+        }
+        
+        .brutalist-box:hover {
+            box-shadow: 12px 12px 0px #000;
+            transform: translate(-6px, -6px);
+        }
+    </style>
+</head>
+<body class="bg-black p-4 md:p-8" style="font-family: 'Space Mono', monospace;">
+    <div class="fixed top-0 left-0 w-full h-2 bg-green-500"></div>
+    <div class="fixed top-2 left-0 w-full h-[1px] bg-green-300"></div>
+    
+    <main class="max-w-7xl mx-auto">
+        <h1 class="text-5xl font-bold mb-12 text-green-500 glitch uppercase tracking-tighter">DESIGN_PORTFOLIO.SYS</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 auto-rows-[250px]">
             <!-- Large featured item -->
-            <div class="relative col-span-2 row-span-2 rounded-xl overflow-hidden group hover:scale-[1.02] transition-transform bg-white shadow-lg">
-                <div class="absolute inset-0 bg-gray-200"></div>
-                <div class="absolute bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent w-full">
-                    <h3 class="text-white text-xl font-bold">Featured Project</h3>
+            <div class="relative col-span-2 row-span-2 brutalist-box border-4 border-green-500 bg-black transition-all duration-300">
+                <div class="absolute inset-0 bg-green-500/10"></div>
+                <div class="absolute top-0 left-0 p-4">
+                    <h3 class="text-green-500 text-xl font-bold uppercase">> FEATURED_PROJECT</h3>
+                </div>
+                <div class="absolute bottom-0 right-0 p-4">
+                    <span class="text-green-500 text-sm">[01]</span>
                 </div>
             </div>
 
             <!-- Regular items -->
-            <div class="relative rounded-xl overflow-hidden group hover:scale-[1.02] transition-transform bg-white shadow-lg">
-                <div class="absolute inset-0 bg-gray-200"></div>
-                <div class="absolute bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent w-full">
-                    <h3 class="text-white">Project 1</h3>
+            <div class="relative brutalist-box border-4 border-green-500 bg-black transition-all duration-300">
+                <div class="absolute inset-0 bg-green-500/10"></div>
+                <div class="absolute top-0 left-0 p-4">
+                    <h3 class="text-green-500 uppercase">> PROJECT_02</h3>
                 </div>
             </div>
 
-            <div class="relative rounded-xl overflow-hidden group hover:scale-[1.02] transition-transform bg-white shadow-lg">
-                <div class="absolute inset-0 bg-gray-200"></div>
-                <div class="absolute bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent w-full">
-                    <h3 class="text-white">Project 2</h3>
+            <div class="relative brutalist-box border-4 border-green-500 bg-black transition-all duration-300">
+                <div class="absolute inset-0 bg-green-500/10"></div>
+                <div class="absolute top-0 left-0 p-4">
+                    <h3 class="text-green-500 uppercase">> PROJECT_03</h3>
                 </div>
             </div>
 
-            <div class="relative rounded-xl overflow-hidden group hover:scale-[1.02] transition-transform bg-white shadow-lg">
-                <div class="absolute inset-0 bg-gray-200"></div>
-                <div class="absolute bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent w-full">
-                    <h3 class="text-white">Project 3</h3>
+            <div class="relative brutalist-box border-4 border-green-500 bg-black transition-all duration-300">
+                <div class="absolute inset-0 bg-green-500/10"></div>
+                <div class="absolute top-0 left-0 p-4">
+                    <h3 class="text-green-500 uppercase">> PROJECT_04</h3>
                 </div>
             </div>
 
-            <div class="relative rounded-xl overflow-hidden group hover:scale-[1.02] transition-transform bg-white shadow-lg">
-                <div class="absolute inset-0 bg-gray-200"></div>
-                <div class="absolute bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent w-full">
-                    <h3 class="text-white">Project 4</h3>
+            <div class="relative brutalist-box border-4 border-green-500 bg-black transition-all duration-300">
+                <div class="absolute inset-0 bg-green-500/10"></div>
+                <div class="absolute top-0 left-0 p-4">
+                    <h3 class="text-green-500 uppercase">> PROJECT_05</h3>
                 </div>
             </div>
         </div>
     </main>
+    
+    <div class="fixed bottom-0 left-0 w-full h-[1px] bg-green-300"></div>
+    <div class="fixed bottom-[1px] left-0 w-full h-2 bg-green-500"></div>
 </body>
 </html>
