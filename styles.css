@@ -1,0 +1,864 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+body { 
+    background: #000022;
+    font-family: 'VT323', monospace;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Stars Animation */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: 
+        radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 50px 160px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 90px 40px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 130px 80px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 160px 120px, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: zoom 20s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes zoom {
+    from {background-position: 0 0;}
+    to {background-position: 200px 200px;}
+}
+
+/* New Start Menu Styles */
+.start-menu {
+    display: none;
+    position: fixed;
+    bottom: 28px;
+    left: 0;
+    width: 280px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    z-index: 10000;
+}
+
+.start-menu.active {
+    display: block;
+}
+
+.sticker-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 8px;
+    background: #fff;
+    margin: 4px;
+}
+
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 28px;
+    background: #c0c0c0;
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    z-index: 9999;
+    border-top: 2px solid #ffffff;
+}
+
+.taskbar-programs {
+    display: flex;
+    gap: 4px;
+    margin-left: 4px;
+    flex: 1;
+}
+
+.taskbar-program {
+    padding: 2px 8px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    font-size: 12px;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.taskbar-program.active {
+    border-color: #404040 #ffffff #ffffff #404040;
+    background: #c1c1c1;
+}
+
+.taskbar-links {
+    display: flex;
+    gap: 8px;
+    margin: 0 16px;
+    align-items: center;
+}
+
+.taskbar-link {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Windows 95 Styles */
+.win95-border {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: 2px 2px 0px #000000, -2px -2px 0px #DFDFDF;
+}
+
+.win95-titlebar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.window {
+    display: none;
+    position: absolute;
+    min-width: 300px;
+    min-height: 200px;
+    background: #c0c0c0;
+    touch-action: none;
+}
+
+.window.active {
+    z-index: 10;
+}
+
+.window-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.window-button {
+    width: 16px;
+    height: 16px;
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.resize-handle {
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+    width: 10px;
+    height: 10px;
+    cursor: se-resize;
+}
+
+/* Desktop Icons */
+.desktop-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 75px);
+    gap: 16px;
+    padding: 16px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 28px);
+    pointer-events: none;
+}
+
+.desktop-icon {
+    pointer-events: all;
+    width: 75px;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    padding: 8px;
+}
+
+.desktop-icon img {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 4px;
+    image-rendering: pixelated;
+}
+
+.desktop-icon .icon-label {
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.desktop-icon:hover .icon-label {
+    background: #000080;
+}
+
+.desktop-icon.selected .icon-label {
+    background: #000080;
+}
+
+/* Taskbar */
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 28px;
+    background: #c0c0c0;
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    z-index: 9999;
+    border-top: 2px solid #ffffff;
+}
+
+.taskbar-programs {
+    display: flex;
+    gap: 4px;
+    margin-left: 4px;
+    flex: 1;
+}
+
+.taskbar-program {
+    padding: 2px 8px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    font-size: 12px;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.taskbar-program.active {
+    border-color: #404040 #ffffff #ffffff #404040;
+    background: #c1c1c1;
+}
+
+.taskbar-links {
+    display: flex;
+    gap: 8px;
+    margin: 0 16px;
+    align-items: center;
+}
+
+.taskbar-link {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Windows 95 Styles */
+.win95-border {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: 2px 2px 0px #000000, -2px -2px 0px #DFDFDF;
+}
+
+.win95-titlebar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.window {
+    display: none;
+    position: absolute;
+    min-width: 300px;
+    min-height: 200px;
+    background: #c0c0c0;
+    touch-action: none;
+}
+
+.window.active {
+    z-index: 10;
+}
+
+.window-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.window-button {
+    width: 16px;
+    height: 16px;
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.resize-handle {
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+    width: 10px;
+    height: 10px;
+    cursor: se-resize;
+}
+
+/* Desktop Icons */
+.desktop-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 75px);
+    gap: 16px;
+    padding: 16px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 28px);
+    pointer-events: none;
+}
+
+.desktop-icon {
+    pointer-events: all;
+    width: 75px;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    padding: 8px;
+}
+
+.desktop-icon img {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 4px;
+    image-rendering: pixelated;
+}
+
+.desktop-icon .icon-label {
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.desktop-icon:hover .icon-label {
+    background: #000080;
+}
+
+.desktop-icon.selected .icon-label {
+    background: #000080;
+}
+
+/* Taskbar */
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 28px;
+    background: #c0c0c0;
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    z-index: 9999;
+    border-top: 2px solid #ffffff;
+}
+
+.taskbar-programs {
+    display: flex;
+    gap: 4px;
+    margin-left: 4px;
+    flex: 1;
+}
+
+.taskbar-program {
+    padding: 2px 8px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    font-size: 12px;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.taskbar-program.active {
+    border-color: #404040 #ffffff #ffffff #404040;
+    background: #c1c1c1;
+}
+
+.taskbar-links {
+    display: flex;
+    gap: 8px;
+    margin: 0 16px;
+    align-items: center;
+}
+
+.taskbar-link {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Windows 95 Styles */
+.win95-border {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: 2px 2px 0px #000000, -2px -2px 0px #DFDFDF;
+}
+
+.win95-titlebar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.window {
+    display: none;
+    position: absolute;
+    min-width: 300px;
+    min-height: 200px;
+    background: #c0c0c0;
+    touch-action: none;
+}
+
+.window.active {
+    z-index: 10;
+}
+
+.window-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.window-button {
+    width: 16px;
+    height: 16px;
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.resize-handle {
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+    width: 10px;
+    height: 10px;
+    cursor: se-resize;
+}
+
+/* Desktop Icons */
+.desktop-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 75px);
+    gap: 16px;
+    padding: 16px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 28px);
+    pointer-events: none;
+}
+
+.desktop-icon {
+    pointer-events: all;
+    width: 75px;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    padding: 8px;
+}
+
+.desktop-icon img {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 4px;
+    image-rendering: pixelated;
+}
+
+.desktop-icon .icon-label {
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.desktop-icon:hover .icon-label {
+    background: #000080;
+}
+
+.desktop-icon.selected .icon-label {
+    background: #000080;
+}
+
+/* Taskbar */
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 28px;
+    background: #c0c0c0;
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    z-index: 9999;
+    border-top: 2px solid #ffffff;
+}
+
+.taskbar-programs {
+    display: flex;
+    gap: 4px;
+    margin-left: 4px;
+    flex: 1;
+}
+
+.taskbar-program {
+    padding: 2px 8px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    font-size: 12px;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.taskbar-program.active {
+    border-color: #404040 #ffffff #ffffff #404040;
+    background: #c1c1c1;
+}
+
+.taskbar-links {
+    display: flex;
+    gap: 8px;
+    margin: 0 16px;
+    align-items: center;
+}
+
+.taskbar-link {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Windows 95 Styles */
+.win95-border {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: 2px 2px 0px #000000, -2px -2px 0px #DFDFDF;
+}
+
+.win95-titlebar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.window {
+    display: none;
+    position: absolute;
+    min-width: 300px;
+    min-height: 200px;
+    background: #c0c0c0;
+    touch-action: none;
+}
+
+.window.active {
+    z-index: 10;
+}
+
+.window-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.window-button {
+    width: 16px;
+    height: 16px;
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.resize-handle {
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+    width: 10px;
+    height: 10px;
+    cursor: se-resize;
+}
+
+/* Desktop Icons */
+.desktop-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 75px);
+    gap: 16px;
+    padding: 16px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 28px);
+    pointer-events: none;
+}
+
+.desktop-icon {
+    pointer-events: all;
+    width: 75px;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    padding: 8px;
+}
+
+.desktop-icon img {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 4px;
+    image-rendering: pixelated;
+}
+
+.desktop-icon .icon-label {
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.desktop-icon:hover .icon-label {
+    background: #000080;
+}
+
+.desktop-icon.selected .icon-label {
+    background: #000080;
+}
+
+/* Taskbar */
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 28px;
+    background: #c0c0c0;
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    z-index: 9999;
+    border-top: 2px solid #ffffff;
+}
+
+.taskbar-programs {
+    display: flex;
+    gap: 4px;
+    margin-left: 4px;
+    flex: 1;
+}
+
+.taskbar-program {
+    padding: 2px 8px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    font-size: 12px;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.taskbar-program.active {
+    border-color: #404040 #ffffff #ffffff #404040;
+    background: #c1c1c1;
+}
+
+.taskbar-links {
+    display: flex;
+    gap: 8px;
+    margin: 0 16px;
+    align-items: center;
+}
+
+.taskbar-link {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Windows 95 Styles */
+.win95-border {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    box-shadow: 2px 2px 0px #000000, -2px -2px 0px #DFDFDF;
+}
+
+.win95-titlebar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.window {
+    display: none;
+    position: absolute;
+    min-width: 300px;
+    min-height: 200px;
+    background: #c0c0c0;
+    touch-action: none;
+}
+
+.window.active {
+    z-index: 10;
+}
+
+.window-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.window-button {
+    width: 16px;
+    height: 16px;
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.resize-handle {
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+    width: 10px;
+    height: 10px;
+    cursor: se-resize;
+}
+
+/* Desktop Icons */
+.desktop-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 75px);
+    gap: 16px;
+    padding: 16px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 28px);
+    pointer-events: none;
+}
+
+.desktop-icon {
+    pointer-events: all;
+    width: 75px;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    padding: 8px;
+}
+
+.desktop-icon img {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 4px;
+    image-rendering: pixelated;
+}
+
+.desktop-icon .icon-label {
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.desktop-icon:hover .icon-label {
+    background: #000080;
+}
+
+.desktop-icon.selected .icon-label {
+    background: #000080;
+}
+
+/* Stickers */
+.sticker-gif {
+    position: absolute;
+    width: 88px;
+    height: 88px;
+    transform: rotate(var(--rotation));
+    z-index: 10;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+}
+
+.sticker-preview {
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.sticker-preview:hover {
+    transform: scale(1.1);
+}
+
+/* Social Links */
+.social-button {
+    @apply win95-button flex items-center gap-2 px-4 py-2;
+}
+
+.social-button.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
