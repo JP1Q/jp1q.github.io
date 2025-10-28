@@ -1,273 +1,153 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio.exe</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aroteo — Portfolio</title>
+  <!-- Remove Google Fonts link -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="p-4 md:p-8">
-    <!-- Desktop Icons -->
-    <div class="desktop-icons">
-        <div class="desktop-icon" data-window="about">
-            <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" alt="About">
-            <div class="icon-label">About.txt</div>
+<body class="antialiased">
+  <div class="cursor-dot"></div>
+
+  <div class="grid-pattern"></div>
+
+  <!-- Header -->
+  <header class="fixed inset-x-0 top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="font-semibold">Aroteo</div>
+      <nav class="hidden md:flex gap-8 text-sm">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="poster-section">
+      <h1 class="main-title">AROTEO</h1>
+      <div class="typewriter-container">
+        <div class="typewriter-text subtitle"></div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="service-grid">
+      <div class="service-block">
+        <span class="number-accent">01</span>
+        <div class="service-title">Website <span>Development</span></div>
+        <div class="service-desc">
+          Contact Forms
+          <br>Landing Pages
+          <br>Portfolio Sites
         </div>
-        
-        <div class="desktop-icon" data-window="ascii">
-            <img src="https://win98icons.alexmeub.com/icons/png/computer_2-4.png" alt="ASCII">
-            <div class="icon-label">ASCII_Art.txt</div>
+      </div>
+
+      <div class="service-block">
+        <span class="number-accent">02</span>
+        <div class="service-title">Poster & <span>Visual Design</span></div>
+        <div class="service-desc">
+          Digital Posters
+          <br>Branding
+          <br>Graphics
         </div>
-        
-        <div class="desktop-icon" data-window="skills">
-            <img src="https://win98icons.alexmeub.com/icons/png/directory_program_group-4.png" alt="Skills">
-            <div class="icon-label">Skills.txt</div>
+      </div>
+
+      <div class="service-block">
+        <span class="number-accent">03</span>
+        <div class="service-title">Discord Bots</div>
+        <div class="service-desc">
+          Custom Commands
+          <br>Automation
+          <br>Integration
         </div>
-        
-        <div class="desktop-icon" data-window="music">
-            <img src="https://win98icons.alexmeub.com/icons/png/cd_audio-4.png" alt="Music">
-            <div class="icon-label">Music.exe</div>
+      </div>
+
+      <div class="service-block">
+        <span class="number-accent">04</span>
+        <div class="service-title">Computer Vision</div>
+        <div class="service-desc">
+          Image Processing
+          <br>Object Detection
+          <br>OpenCV Solutions
         </div>
-        
-        <div class="desktop-icon" data-window="art">
-            <img src="https://win98icons.alexmeub.com/icons/png/directory_pictures-4.png" alt="Art">
-            <div class="icon-label">MyArt.exe</div>
+      </div>
+
+      <div class="service-block">
+        <span class="number-accent">05</span>
+        <div class="service-title">Web Scraping</div>
+        <div class="service-desc">
+          Data Extraction
+          <br>Automated Collection
+          <br>Custom Scrapers
         </div>
+      </div>
+    </section>
+
+    <!-- Poster Showcase -->
+    <section class="service-grid">
+      <div class="poster-header">
+        <h2 class="work-title">POSTER DESIGNS</h2>
+      </div>
+      
+      <div class="service-block poster-block">
+        <div class="poster-content" onclick="openModal(this)">
+          <span class="number-accent">01</span>
+          <img src="posters/poster1.jpg" alt="Poster 1">
+        </div>
+      </div>
+
+      <div class="service-block poster-block">
+        <div class="poster-content" onclick="openModal(this)">
+          <span class="number-accent">02</span>
+          <img src="posters/poster2.jpg" alt="Poster 2">
+        </div>
+      </div>
+
+      <div class="service-block poster-block">
+        <div class="poster-content" onclick="openModal(this)">
+          <span class="number-accent">03</span>
+          <img src="posters/poster3.jpg" alt="Poster 3">
+        </div>
+      </div>
+
+      <div class="service-block poster-block">
+        <div class="poster-content" onclick="openModal(this)">
+          <span class="number-accent">04</span>
+          <img src="posters/poster4.jpg" alt="Poster 4">
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="posterModal" class="modal">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <img id="modalImage" class="modal-content" src="" alt="Enlarged poster">
     </div>
 
-    <main class="relative h-[calc(100vh-120px)]">
-        <!-- About Window -->
-        <div class="window win95-border bg-[#c0c0c0]" data-id="about" style="left: 20px; top: 20px;">
-            <div class="win95-titlebar cursor-move">
-                <span class="text-white">About.txt</span>
-                <div class="window-controls">
-                    <button class="window-button minimize">_</button>
-                    <button class="window-button maximize">□</button>
-                    <button class="window-button close">×</button>
-                </div>
-            </div>
-            <div class="p-4 overflow-auto" style="height: calc(100% - 24px);">
-                <h2 class="text-2xl mb-4">Hello, I'm Aroteo</h2>
-                <div class="space-y-4">
-                    <p>I'm currently studying IT at <a href="https://www.spsul.cz" target="_blank" class="text-blue-800 hover:underline">SPŠUL</a>. I'm passionate about creating various forms of digital art and technology.</p>
-                    
-                    <p>What I do:</p>
-                    <ul class="list-disc pl-5 space-y-1">
-                        <li>Develop Discord bots</li>
-                        <li>Create backend APIs with web scraping capabilities</li>
-                        <li>Design posters and visual art</li>
-                        <li>Produce music</li>
-                    </ul>
-
-                    <div class="flex flex-wrap gap-4 mt-6">
-                        <a href="https://github.com/YourUsername" target="_blank" class="social-button">
-                            <i class="fab fa-github"></i>
-                            GitHub
-                        </a>
-                        <a href="https://youtube.com/YourChannel" target="_blank" class="social-button">
-                            <i class="fab fa-youtube"></i>
-                            YouTube
-                        </a>
-                        <a href="https://soundcloud.com/YourProfile" target="_blank" class="social-button">
-                            <i class="fab fa-soundcloud"></i>
-                            SoundCloud
-                        </a>
-                        <div class="social-button disabled">
-                            <i class="fab fa-spotify"></i>
-                            Spotify
-                        </div>
-                    </div>
-
-                    <!-- Sticker gifs with random positions -->
-                    <img src="gif1.gif" class="sticker-gif" style="--rotation: -15deg; top: 20px; right: 40px;">
-                    <img src="emote1.gif" class="sticker-gif" style="--rotation: 10deg; bottom: 30px; right: 60px;">
-                </div>
-            </div>
-            <div class="resize-handle"></div>
+    <!-- Work Section -->
+    <section class="work-section">
+      <div class="work-container">
+        <h2 class="work-title">Look at my work</h2>
+        <div class="button-group">
+          <a href="https://github.com/JP1Q" class="action-button github-button">
+            <svg class="button-icon" height="32" viewBox="0 0 16 16" fill="currentColor">
+              <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
         </div>
+      </div>
+    </section>
 
-        <!-- ASCII Art Section -->
-        <div class="window win95-border bg-[#c0c0c0]" data-id="ascii" style="left: 350px; top: 20px;">
-            <div class="win95-titlebar cursor-move">
-                <span class="text-white">ASCII_Art.txt</span>
-                <div class="window-controls">
-                    <button class="window-button minimize">_</button>
-                    <button class="window-button maximize">□</button>
-                    <button class="window-button close">×</button>
-                </div>
-            </div>
-            <div class="p-4 overflow-auto" style="height: calc(100% - 24px);">
-                <pre class="font-mono text-sm whitespace-pre overflow-x-auto">
-  ／l、    
-（ﾟ､ ｡ ７  
- l  ~ヽ    
- じしf_,)ノ
-                </pre>
-                <pre class="font-mono text-sm whitespace-pre overflow-x-auto mt-4">
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣶⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷℄⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀
-                </pre>
-            </div>
-            <div class="resize-handle"></div>
-        </div>
+    <footer class="poster-section" style="padding-top: 15vh">
+      <p style="font-size: 0.875rem">Aroteo — made with ❤️</p>
+    </footer>
+  </main>
 
-        <!-- Skills Section -->
-        <div class="window win95-border bg-[#c0c0c0]" data-id="skills" style="left: 20px; top: 250px;">
-            <div class="win95-titlebar cursor-move">
-                <span class="text-white">Skills.txt</span>
-                <div class="window-controls">
-                    <button class="window-button minimize">_</button>
-                    <button class="window-button maximize">□</button>
-                    <button class="window-button close">×</button>
-                </div>
-            </div>
-            <div class="p-4 overflow-auto" style="height: calc(100% - 24px);">
-                <h3 class="text-xl mb-4">Technical Skills</h3>
-                <ul class="list-disc pl-5">
-                    <li>Backend Development (Node.js, Python)</li>
-                    <li>Discord Bot Development</li>
-                    <li>Web Scraping & API Integration</li>
-                    <li>Graphic Design & Digital Art</li>
-                </ul>
-                <img src="gif2.gif" class="sticker-gif" style="--rotation: 5deg; top: 40px; right: 30px;">
-            </div>
-            <div class="resize-handle"></div>
-        </div>
-
-        <!-- Music Section -->
-        <div class="window win95-border bg-[#c0c0c0]" data-id="music" style="left: 350px; top: 250px;">
-            <div class="win95-titlebar cursor-move">
-                <span class="text-white">Music.txt</span>
-                <div class="window-controls">
-                    <button class="window-button minimize">_</button>
-                    <button class="window-button maximize">□</button>
-                    <button class="window-button close">×</button>
-                </div>
-            </div>
-            <div class="p-4 overflow-auto" style="height: calc(100% - 24px);">
-                <div class="flex justify-between">
-                    <div>
-                        <h3 class="text-xl mb-4">Music Production</h3>
-                        <p>Creating beats and electronic music in my free time.</p>
-                        <p>Check out my latest tracks on SoundCloud!</p>
-                    </div>
-                    <img src="gif3.gif" class="sticker-gif" style="--rotation: -8deg; position: relative; margin-left: 20px;">
-                </div>
-            </div>
-            <div class="resize-handle"></div>
-        </div>
-
-        <!-- Projects Window -->
-        <div class="window win95-border bg-[#c0c0c0]" data-id="art" style="left: 50px; top: 150px;">
-            <div class="win95-titlebar cursor-move">
-                <span class="text-white">MyArt.exe</span>
-                <div class="window-controls">
-                    <button class="window-button minimize">_</button>
-                    <button class="window-button maximize">□</button>
-                    <button class="window-button close">×</button>
-                </div>
-            </div>
-            <div class="p-4 overflow-auto" style="height: calc(100% - 24px);">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Featured item -->
-                    <div class="relative col-span-2 aspect-video win95-border bg-[#c0c0c0]">
-                        <div class="win95-titlebar">
-                            <span class="text-white">Featured.bmp</span>
-                        </div>
-                        <div class="p-2 h-[calc(100%-28px)]">
-                            <div class="bg-white h-full"></div>
-                        </div>
-                    </div>
-
-                    <!-- Regular items -->
-                    <div class="relative aspect-square win95-border bg-[#c0c0c0]">
-                        <div class="win95-titlebar">
-                            <span class="text-white">Project1.bmp</span>
-                        </div>
-                        <div class="p-2 h-[calc(100%-28px)]">
-                            <div class="bg-white h-full"></div>
-                        </div>
-                    </div>
-
-                    <div class="relative aspect-square win95-border bg-[#c0c0c0]">
-                        <div class="win95-titlebar">
-                            <span class="text-white">Project2.bmp</span>
-                        </div>
-                        <div class="p-2 h-[calc(100%-28px)]">
-                            <div class="bg-white h-full"></div>
-                        </div>
-                    </div>
-
-                    <div class="relative aspect-square win95-border bg-[#c0c0c0]">
-                        <div class="win95-titlebar">
-                            <span class="text-white">Project3.bmp</span>
-                        </div>
-                        <div class="p-2 h-[calc(100%-28px)]">
-                            <div class="bg-white h-full"></div>
-                        </div>
-                    </div>
-
-                    <div class="relative aspect-square win95-border bg-[#c0c0c0]">
-                        <div class="win95-titlebar">
-                            <span class="text-white">Project4.bmp</span>
-                        </div>
-                        <div class="p-2 h-[calc(100%-28px)]">
-                            <div class="bg-white h-full"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="resize-handle"></div>
-        </div>
-    </main>
-
-    <!-- Start Menu -->
-    <div class="start-menu">
-        <div class="win95-titlebar">
-            <span class="text-white">Stickers</span>
-        </div>
-        <div class="sticker-container">
-            <img src="stickers/gif1.gif" class="sticker-preview">
-            <img src="stickers/gif2.gif" class="sticker-preview">
-            <img src="stickers/gif3.gif" class="sticker-preview">
-            <!-- Add more stickers as needed -->
-        </div>
-    </div>
-
-    <!-- Updated Taskbar -->
-    <div class="taskbar win95-border">
-        <div class="taskbar-start">
-            <button class="win95-button start-button">
-                <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" alt="Start" class="w-4 h-4 inline mr-1">
-                Start
-            </button>
-        </div>
-        <div class="taskbar-programs">
-            <!-- Running programs will be added here dynamically -->
-        </div>
-        <div class="taskbar-links">
-            <a href="https://github.com/YourUsername" class="taskbar-link win95-button" title="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://youtube.com/YourChannel" class="taskbar-link win95-button" title="YouTube">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://soundcloud.com/YourProfile" class="taskbar-link win95-button" title="SoundCloud">
-                <i class="fab fa-soundcloud"></i>
-            </a>
-        </div>
-        <div class="taskbar-time" id="clock"></div>
-    </div>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
